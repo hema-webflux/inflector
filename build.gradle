@@ -1,9 +1,14 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'signing'
 }
 
-group = 'com.github.spring-illuminate.inflector'
+apply {
+    from '/home/xgbnl/.gradle/publish.gradle'
+}
+
+group = 'io.github.spring-illuminate.inflector'
 version = '1.0'
 
 repositories {
@@ -11,7 +16,8 @@ repositories {
 }
 
 java {
-    sourceCompatibility = '21'
+    sourceCompatibility = "${JavaVersion.VERSION_21}"
+    targetCompatibility = "${JavaVersion.VERSION_21}"
 }
 
 dependencies {
@@ -34,14 +40,19 @@ publishing {
             from components.java
         }
         mavenJava(MavenPublication) {
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
             pom {
                 name = 'inflector'
                 description = '文字变形器'
                 url = 'https://github.com/spring-illuminate/inflector'
-                properties = [
-                        myProp: "value",
-                        "prop.with.dots": "anotherValue"
-                ]
+
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
@@ -62,5 +73,24 @@ publishing {
                 }
             }
         }
+    }
+    repositories {
+        maven {
+            url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
     }
 }

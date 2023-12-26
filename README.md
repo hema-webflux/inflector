@@ -1,24 +1,21 @@
 # Inflector
 
 **Simple example**
+
 ```java
 import github.illuminate.Inflector;
 
-class GoodOrder {}
+class GoodOrder {
+}
 
 public class Test {
 
     public static void main(String[] args) {
-        
-    }
 
-    public void test(){
-
-        String str = this.inflector.plural("GoodOrder"); // GoodOrders
-
-        str = this.inflector.snake(str,"_"); // good_orders
+        // Generate table name.
+        Inflector inflector = new Inflector();
+        String tableName = inflector.sanke(inflector.plural(GoodOrder.class.getSimpleName()),"_"); // good_orders
 
     }
-
 }
 ```

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group = 'com.github.spring-illuminate.inflector'
@@ -21,4 +22,45 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.gradle.sample'
+            artifactId = 'library'
+            version = '1.1'
+
+            from components.java
+        }
+        mavenJava(MavenPublication) {
+            pom {
+                name = 'inflector'
+                description = '文字变形器'
+                url = 'https://github.com/spring-illuminate/inflector'
+                properties = [
+                        myProp: "value",
+                        "prop.with.dots": "anotherValue"
+                ]
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'illuminate'
+                        name = 'xgbnl'
+                        email = '745502274@qq.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git@github.com:spring-illuminate/inflector.git'
+                    developerConnection = 'scm:git@github.com:spring-illuminate/inflector.git'
+                    url = 'https://github.com/spring-illuminate/inflector'
+                }
+            }
+        }
+    }
 }

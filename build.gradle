@@ -8,7 +8,7 @@ apply {
     from '/home/xgbnl/.gradle/publish.gradle'
 }
 
-group = 'io.github.spring-illuminate.inflector'
+group = 'io.github.spring-illuminate'
 version = '1.0'
 
 repositories {
@@ -16,8 +16,8 @@ repositories {
 }
 
 java {
-    sourceCompatibility = "${JavaVersion.VERSION_21}"
-    targetCompatibility = "${JavaVersion.VERSION_21}"
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 dependencies {
@@ -33,9 +33,9 @@ test {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'org.gradle.sample'
-            artifactId = 'library'
-            version = '1.1'
+            groupId = project.group
+            artifactId = "${project.getName()}-spring-boot-starter"
+            version = '1.0'
 
             from components.java
         }
@@ -76,7 +76,7 @@ publishing {
     }
     repositories {
         maven {
-            url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
                 username sonatypeUsername
                 password sonatypePassword

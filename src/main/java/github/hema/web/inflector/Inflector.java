@@ -1,6 +1,6 @@
-package github.illuminate;
+package github.hema.web.inflector;
 
-import github.illuminate.contacts.WordInflector;
+import github.hema.web.inflector.contracts.WordInflector;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

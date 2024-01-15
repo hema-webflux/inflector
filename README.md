@@ -3,7 +3,7 @@
 **Simple example**
 
 ```java
-import github.illuminate.Inflector;
+import github.hema.web.inflector.Inflector;
 
 class GoodOrder {
 }
@@ -14,7 +14,7 @@ public class Test {
 
         // Generate table name.
         Inflector inflector = new Inflector();
-        String tableName = inflector.sanke(inflector.plural(GoodOrder.class.getSimpleName()),"_"); // good_orders
+        String    tableName = inflector.sanke(inflector.plural(GoodOrder.class.getSimpleName()), "_"); // good_orders
 
     }
 }

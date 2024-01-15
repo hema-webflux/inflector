@@ -1,6 +1,4 @@
-import github.illuminate.Inflector;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import github.hema.web.inflector.Inflector;
 
 public class TestExample {
 

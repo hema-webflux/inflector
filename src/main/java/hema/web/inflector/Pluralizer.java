@@ -7,6 +7,8 @@ final class Pluralizer implements WordInflector {
 
     private final Map<String, String> caches = new HashMap<>();
 
+    private static final String chars = "bcdfghjklmnpqrstvwxyzs";
+
     @Override
     public String inflect(String word) {
 
@@ -51,8 +53,6 @@ final class Pluralizer implements WordInflector {
     }
 
     private boolean hasChars(String word) {
-        String chars = "bcdfghjklmnpqrstvwxyzs";
-
         return chars.contains(String.valueOf(word.charAt(word.length() - 2)));
     }
 }

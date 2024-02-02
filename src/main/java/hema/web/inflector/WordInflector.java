@@ -1,4 +1,4 @@
-package github.hema.web.inflector.contracts;
+package hema.web.inflector;
 
 public interface WordInflector {
     String inflect(String word);

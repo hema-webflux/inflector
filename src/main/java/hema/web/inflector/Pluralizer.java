@@ -1,12 +1,8 @@
-package github.hema.web.inflector;
-
-import github.hema.web.inflector.contracts.WordInflector;
-import org.springframework.stereotype.Component;
+package hema.web.inflector;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
 final class Pluralizer implements WordInflector {
 
     private final Map<String, String> caches = new HashMap<>();

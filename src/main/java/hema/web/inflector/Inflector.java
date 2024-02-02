@@ -1,14 +1,10 @@
-package github.hema.web.inflector;
-
-import github.hema.web.inflector.contracts.WordInflector;
-import org.springframework.stereotype.Component;
+package hema.web.inflector;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Component
 public final class Inflector {
 
     private final WordInflector pluralizer;
@@ -44,9 +40,6 @@ public final class Inflector {
         return matcher.replaceAll("$1,").split(",");
     }
 
-    /**
-     * Convert a string to snake case.
-     */
     public String snake(String value, String delimiter) {
 
         String key = value;

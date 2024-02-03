@@ -4,7 +4,9 @@ plugins {
     signing
 }
 
-apply(from = findProperty("SIGNING_CONFIGURE"))
+val file = findProperty("SIGNING_CONFIGURE_FILE")
+val publishGradlePath = "${System.getProperty("user.home")}/.gradle/${file}"
+apply(from = publishGradlePath )
 
 group = findProperty("PACKAGE_GROUP") as String
 version = findProperty("PACKAGE_VERSION") as String
